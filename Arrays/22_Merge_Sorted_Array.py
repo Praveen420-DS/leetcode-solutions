@@ -1,0 +1,25 @@
+class Solution(object):
+    def merge(self, nums1, m, nums2, n):
+        """
+        :type nums1: List[int]
+        :type m: int
+        :type nums2: List[int]
+        :type n: int
+        :rtype: None Do not return anything, modify nums1 in-place instead.
+        """
+        i=m-1
+        j=n-1
+        k=(m+n)-1
+        while(i>-1 and j>-1):
+            v=max(nums2[j],nums1[i])
+            nums1[k]=v
+            if v==nums2[j]:
+                j-=1
+            else:
+                i-=1
+            k-=1
+        while(j>-1):
+            nums1[k]=nums2[j]
+            j-=1
+            k-=1
+        return nums1
